@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        body {
+            margin-top: 0;
+        }
+
+        [x-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-slate-900 mx-4">
+    <div class="container mx-auto">
+        <h1
+            class="mx-auto mt-2 max-w-lg text-prett text-white text-center text-6xl font-large tracking-tight text-gray-950 sm:text-5xl">
+            The Personal Journal</h1>
+
+        <div x-data="{open: false}" class="mx-auto my-8 text-center">
+            <button x-on:click="open = !open" class="bg-indigo-700 text-white px-4 py-2 rounded-xl">
+                Add Entry
+            </button>
+
+
+            <div x-show="open" class="mb-8 my-4" x-cloak>
+                <form @submit.prevent="submitEntry" class="space-y-4">
+                    <input type="text" placeholder="Title (not compulsory)" x-model="entry.title" class="w-full p-2 border rounded"/>
+                    <textarea placeholder="Content" x-model="entry.content" class="w-full p-2 border rounded"
+                        required></textarea>
+                    <div class="flex space-x-2">
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+                            <span x-show="!isEditing">Add Entry</span>
+                            <span x-show="isEditing">Update Entry</span>
+                        </button>
+                        <button type="button" @click="cancelEdit" x-show="isEditing"
+                            class="bg-gray-500 text-white px-4 py-2 rounded">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div> <!-- Add entry close -->
+
+        <div class="my-4 bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+            <div class="" x-></div>
+        </div>
+    </div>
+</body>
+
+</html>
